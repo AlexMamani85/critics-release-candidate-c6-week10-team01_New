@@ -2,6 +2,8 @@ class Platform < ApplicationRecord
   validates :name, presence: true
   validates :category, presence: true
 
+  has_and_belongs_to_many :games
+
   enum category: {
     console: 0,
     arcade: 1,
