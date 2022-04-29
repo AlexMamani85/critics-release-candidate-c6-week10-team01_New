@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :critics
+  resources :users
   resources :involved_companies
   resources :games
   resources :genres
