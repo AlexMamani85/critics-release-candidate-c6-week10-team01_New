@@ -16,6 +16,8 @@ class Game < ApplicationRecord
 
   belongs_to :parent, class_name: "Game", optional: true
 
+  has_one_attached :cover
+
   private
 
   def validate_parent
