@@ -1,5 +1,5 @@
 class Platform < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :category, presence: true
 
   has_and_belongs_to_many :games
