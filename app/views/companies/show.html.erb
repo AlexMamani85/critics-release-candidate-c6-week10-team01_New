@@ -1,10 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @company %>
+<%= image_tag(@company.cover) if @company.cover.attached? %>
+
+<p>
+<%= @company.name%>
+</p>
+
+<%= @company.start_date.year %> - <%= @company.country %>
+<!-- View de "Company Details" -->
+<div>
+<%= @company.description %>
+<h3>Games (<%= @company.games.count%>)</h3>
+
+  <div id="companies">
+    <% @company.games.each do |game| %>
+     <%= render game %>
+    <% end %>
+  </div>
+</div>
+
+<!-- View de "Critics" -->
+
+
 
 <div>
-  <%= link_to "Edit this company", edit_company_path(@company) %> |
-  <%= link_to "Back to companies", companies_path %>
-
-  <%= button_to "Destroy this company", @company, method: :delete %>
+  <%= link_to "EDIT", edit_company_path(@company) %> |
+  <%= link_to "BACK", companies_path %>
+<!--<%= button_to "Destroy this company", @company, method: :delete %> -->
 </div>
+

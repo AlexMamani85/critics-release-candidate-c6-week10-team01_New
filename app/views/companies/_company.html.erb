@@ -1,22 +1,24 @@
 <div id="<%= dom_id company %>">
+
+  <div>
+  <% if company.cover.attached? %>
+    <div>
+      <%= image_tag(company.cover, class: "category-image") %>
+    </div>
+  <% end %>
+</div>
+
   <p>
-    <strong>Name:</strong>
     <%= company.name %>
   </p>
 
   <p>
-    <strong>Description:</strong>
-    <%= company.description %>
-  </p>
-
-  <p>
-    <strong>Start date:</strong>
     <%= company.start_date %>
+    <%= company.country %>
   </p>
 
   <p>
-    <strong>Country:</strong>
-    <%= company.country %>
+    <%= company.description %>
   </p>
 
 </div>
