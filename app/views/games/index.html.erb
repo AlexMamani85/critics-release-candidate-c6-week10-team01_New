@@ -7,10 +7,40 @@
 
 <div id="games">
   <% @games.each do |game| %>
+
+    <div class="card--image">
+      <% if game.cover.attached? %>
+        <div>
+          <%= image_tag(game.cover, class: "category-image") %>
+        </div>
+      <% end %>
+    </div> 
+
     <p>
-      <%= link_to "Show this game", game %>
+      <strong><%= game.name %></strong>
     </p>
-    <%= render game %>
+
+    <p>
+      <%= game.rating %>
+    </p>
+
+    <% unless game.release_date.blank? %>
+      <p>
+        <%= game.release_date.year %>
+      </p>
+    <% end %>
+
+    <p>
+      <%= game.summary %>
+    </p>
+
+    <p>
+      <%= game.critics.count %> critics
+    </p>
+
+    <%= link_to "Show this game", game_path(game) %> | 
+    <%= link_to "Edit this game", edit_game_path(game) %>
+    <%= button_to "Destroy this game", game, method: :delete %>
     
   <% end %>
 </div>

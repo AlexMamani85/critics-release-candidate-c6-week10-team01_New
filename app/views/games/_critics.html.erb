@@ -1,5 +1,5 @@
 
-<%= form_with(model: critic) do |form| %>
+<%= form_with  url: game_critics_path(@game), model: critic do |form| %>
   <% if critic.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(critic.errors.count, "error") %> prohibited this critic from being saved:</h2>
@@ -23,11 +23,22 @@
   </div>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
     <%= form.submit %>
   </div>
+<% end %>
+
+<hr>
+
+<% @critics.each do |critic| %>
+  <% days = (Date.today.day - critic.created_at.day).abs  %>
+  <% message = days == 0 ? "Comented now" : "Send #{days} days ago" %>
+  <h2><%= critic.title %></h2>
+  <p>by <%= critic.user.username %></p>
+  <p><%= critic.body %></p>
+  <p><%= message %></p>
+
+  <%= link_to "Destroy", game_critic_path(@game, critic), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+  } %>
 <% end %>

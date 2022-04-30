@@ -1,10 +1,62 @@
-<p style="color: green"><%= notice %></p>
+<%= render "game", game: @game %>
 
-<%= render @game %>
+<hr>
+<%= link_to "Game details", game_path(@game) %>
 
-<div>
-  <%= link_to "Edit this game", edit_game_path(@game) %> |
-  <%= link_to "Back to games", games_path %>
+<p>
+  <%= @game.summary %>
+</p>
 
-  <%= button_to "Destroy this game", @game, method: :delete %>
-</div>
+<h3>Genres:</h3>
+<ul>
+  <% @game.genres.each do |g| %>
+    <li><%= g.name %> | <%= link_to 'X', remove_genre_game_path(@game, genre_id: g.id), data: { turbo_method: :delete } %> </li>
+  <% end %>
+</ul>
+
+<h3>Platforms:</h3>
+<ul>
+  <% @game.platforms.each do |g| %>
+    <li><%= g.name %> | <%= link_to 'X', remove_platform_game_path(@game, platform_id: g.id), data: { turbo_method: :delete } %></li>
+  <% end %>
+</ul>
+
+<h3>Developer:</h3>
+<ul>
+  <% @game.involved_companies.where(developer: true).each do |g| %>
+    <li><%= g.company.name %> | <%= link_to 'X', remove_developer_game_path(@game, invol_id: g.id), data: { turbo_method: :delete } %></li>
+  <% end %>
+</ul>
+
+<h3>Publishers:</h3>
+  <ul>
+    <% @game.involved_companies.where(publisher: true).each do |g| %>
+      <li><%= g.company.name %> | <%= link_to 'X', remove_publisher_game_path(@game, invol_id: g.id), data: { turbo_method: :delete } %></li>
+    <% end %>
+  </ul>
+
+  <%= form_with(url: add_genre_game_path(@game)) do |form| %>
+    <%= form.collection_select :genre_id, (Genre.all - @game.genres), :id, :name, { prompt: true } %>
+    <%= form.submit "Add Genre"%>
+  <% end %>
+
+  <%= form_with(url: add_platform_game_path(@game)) do |form| %>
+    <%= form.collection_select :platform_id, (Platform.all - @game.platforms), :id, :name, { prompt: true }%>
+    <%= form.submit "Add Platform"%>
+  <% end %>
+
+  <%= form_with(url: add_developer_game_path(@game)) do |form| %>
+    <%= form.collection_select :company_id, (Company.all), :id, :name, { prompt: true }%>
+    <%= form.submit "Add Developer"%>
+  <% end %>
+
+  <%= form_with(url: add_publisher_game_path(@game)) do |form| %>
+    <%= form.collection_select :company_id, (Company.all), :id, :name, { prompt: true }%>
+    <%= form.submit "Add Publisher"%>
+  <% end %>
+
+<%= render "games/critics", critic: @new_critic %>
+
+<br>
+
+<%= link_to "Back", games_path %>

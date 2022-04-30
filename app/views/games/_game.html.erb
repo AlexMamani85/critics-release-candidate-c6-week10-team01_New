@@ -1,6 +1,5 @@
 <div id="<%= dom_id game %>">
 
-
 <div class="card">
     <div class="card--image">
       <% if game.cover.attached? %>
@@ -12,36 +11,15 @@
     
     <div class="card--content">
       <p>
-        <strong>Name:</strong>
         <%= game.name %>
       </p>
 
-
-
       <p>
-        <strong>Summary:</strong>
-        <%= game.summary %>
+        <%= game.release_date.year %>
       </p>
-
+      
       <p>
-        <strong>Release date:</strong>
-        <%= game.release_date %>
-      </p>
-
-      <p>
-        <strong>Category:</strong>
-        <%= game.category %>
-      </p>
-
-      <p>
-        <strong>Rating:</strong>
         <%= game.rating %>
       </p>
-
-      <p>
-        <strong>Parent:</strong>
-        <%= game.parent_id %>
-      </p>
     </div>
-  <div>
 </div>
