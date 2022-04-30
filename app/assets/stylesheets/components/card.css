@@ -1,0 +1,20 @@
+.card {
+    padding: 1.5rem, 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .card--image{
+  
+      margin-top:8px;
+      align-items:center;
+      justify-self :center;
+      justify-content: center;
+  }
+  
+  .card--content
+  {
+    max-width: 375px;
+  }
+  
