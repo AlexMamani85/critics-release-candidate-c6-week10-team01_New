@@ -28,23 +28,28 @@
   </div>
 
   <div>
+
     <%= form.label :category, style: "display: block", class:"mt-1 mb-0.25" %>
-    <%= form.number_field :category, class:"input"  %>
+    <%= form.number_field :category, Game.categories.keys, { prompt: true }, class:"input"  %>
   </div>
 
   <div>
     <%= form.label :rating, style: "display: block", class:"mt-1 mb-0.25" %>
-    <%= form.text_field :rating, class:"input", placeholder:"0.0"  %>
+    <%= form.text_field :rating, step: 0.1, class:"input", placeholder:"0.0"  %>
   </div>
 
   <div>
     <%= form.label :parent_id, style: "display: block", class:"mt-1 mb-0.25" %>
-    <%= form.text_field :parent_id, class:"input"  %>
+    <%= form.collection_select :parent_id, Game.main_game, :id, :name, { include_blank: "Please select" }, class:"input" %>
+  </div>  
+    
+  <div>
+    <%= form.label :cover, style: "display: block" %>
+    <%= form.file_field :cover %>
   </div>
 
+    
   <div class="button button--primary" >
-  
-    <%= form.submit %>
-
+      <%= form.submit %>
   </div>
 <% end %>
