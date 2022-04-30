@@ -41,6 +41,14 @@
   <div>
     <%= form.label :parent_id, style: "display: block", class:"mt-1 mb-0.25" %>
     <%= form.collection_select :parent_id, Game.main_game, :id, :name, { include_blank: "Please select" }, class:"input" %>
+  </div>
+
+  <div class="card--image">
+    <% if game.cover.attached? %>
+      <div>
+        <%= image_tag(game.cover, class: "category-image") %>
+      </div>
+    <% end %>
   </div>  
     
   <div>

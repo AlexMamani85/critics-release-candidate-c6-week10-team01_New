@@ -1,58 +1,36 @@
 class CriticsController < ApplicationController
-  before_action :set_critic, only: %i[ show edit update destroy ]
-
-  # GET /critics
-  def index
-    @critics = Critic.all
-  end
-
-  # GET /critics/1
-  def show
-  end
-
-  # GET /critics/new
-  def new
-    @critic = Critic.new
-  end
-
-  # GET /critics/1/edit
-  def edit
-  end
-
   # POST /critics
   def create
-    @critic = Critic.new(critic_params)
-
+    if params[:game_id]
+      game = Game.find(params[:game_id])
+      @critic = game.critics.create(critic_params)
+    elsif params[:company_id] 
+      company = Company.find(params[:company_id])
+      @critic = company.critics.create(critic_params)
+    end
+    @critic.user = current_user
     if @critic.save
-      redirect_to @critic, notice: "Critic was successfully created."
+      redirect_to game || company, notice: "Critic was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /critics/1
-  def update
-    if @critic.update(critic_params)
-      redirect_to @critic, notice: "Critic was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
 
   # DELETE /critics/1
   def destroy
-    @critic.destroy
-    redirect_to critics_url, notice: "Critic was successfully destroyed."
+    @critics = Critic.find(params[:id])
+    @critics.delete
+    if params[:game_id]
+      redirect_to games_path, notice: "Critic was successfully destroyed."
+    elsif params[:company_id]
+      redirect_to companies_path, notice: "Critic was successfully destroyed."
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_critic
-      @critic = Critic.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def critic_params
-      params.require(:critic).permit(:title, :body, :user_id)
+      params.require(:critic).permit(:title, :body)
     end
 end

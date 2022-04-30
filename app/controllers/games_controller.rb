@@ -1,13 +1,9 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: %i[ show edit update destroy ]
+  before_action :set_game, only: %i[ edit update destroy show ]
 
   # GET /games
   def index
     @games = Game.all
-  end
-
-  # GET /games/1
-  def show
   end
 
   # GET /games/new
@@ -43,6 +39,75 @@ class GamesController < ApplicationController
   def destroy
     @game.destroy
     redirect_to games_url, notice: "Game was successfully destroyed."
+  end
+
+  def show 
+    @critics = @game.critics
+    @new_critic = Critic.new
+  end
+
+  def add_genre
+    game = Game.find(params[:id])
+    genre = Genre.find(params[:genre_id])
+
+    game.genres << genre
+    redirect_to game
+  end
+
+  def remove_genre
+    game = Game.find(params[:id])
+    genre = Genre.find(params[:genre_id])
+
+    game.genres.delete(genre)
+    redirect_to game, status: :see_other
+  end
+
+  def add_platform
+    game = Game.find(params[:id])
+    platform = Platform.find(params[:platform_id])
+
+    game.platforms << platform
+    redirect_to game
+  end
+
+  def remove_platform
+    game = Game.find(params[:id])
+    platform = Platform.find(params[:platform_id])
+
+    game.platforms.delete(platform)
+    redirect_to game, status: :see_other
+  end
+
+  def add_developer
+    game = Game.find(params[:id])
+    company = Company.find(params[:company_id])
+
+    game.involved_companies.create(developer: true, publisher: false, company: company)
+    redirect_to game, status: :see_other
+  end
+
+  def remove_developer
+    game = Game.find(params[:id])
+    invcomp = InvolvedCompany.find(params[:invol_id])
+
+    game.involved_companies.delete(invcomp)
+    redirect_to game, status: :see_other
+  end
+
+  def add_publisher
+    game = Game.find(params[:id])
+    company = Company.find(params[:company_id])
+
+    game.involved_companies.create(developer: false, publisher: true, company: company)
+    redirect_to game, status: :see_other
+  end
+
+  def remove_publisher
+    game = Game.find(params[:id])
+    invcomp = InvolvedCompany.find(params[:invol_id])
+
+    game.involved_companies.delete(invcomp)
+    redirect_to game, status: :see_other
   end
 
   private

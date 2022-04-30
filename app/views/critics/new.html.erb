@@ -1,9 +1,9 @@
 <h1>New critic</h1>
 
-<%= render "form", critic: @critic %>
-
+<%= render "form", critic: @new_critic %>
 <br>
+<%= link_to "Game details", game_path(@game) %>
+<%= link_to "Critics (#{@game.critics.count})", game_critics_path(@game) %>
 
-<div>
-  <%= link_to "Back to critics", critics_path %>
-</div>
+
+
