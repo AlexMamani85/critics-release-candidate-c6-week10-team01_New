@@ -1,7 +1,7 @@
 class Game < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :category, presence: true
-  validates :release_date, comparison: { less_than: Date.current }
+  validates :release_date, comparison: { less_than: Date.current }, allow_blank: true
   validates :rating,
             numericality: {
             greater_than_or_equal_to: 0,

@@ -1,25 +1,39 @@
 <div id="<%= dom_id game %>">
 
-  <div class="card">
-
-    <div class="card--image">
-    </div>
-
-    <div class="card--content">
-      <p><%= game.name %><%= game.rating %></p>
-      <p><%= game.release_date.year %></p>
-      <p><%= game.summary %></p>
-      <p><%= game.critics.count%> Critics</p>
-
-
-    </div>
-
+<div class="card wrapper">
+  <div class="card--image wrapper">
+    <% if game.cover.attached? %>
+      <div>
+        <%= image_tag(game.cover) %>
+      </div>
+    <% end %>
+  </div>  
+  
+  <div class="card--content wrapper">
+    <p>
+      <strong>Name:</strong>
+      <%= game.name %>
+    </p>
+    <p>
+      <strong>Summary:</strong>
+      <%= game.summary %>
+    </p>
+    <p>
+      <strong>Release date:</strong>
+      <%= game.release_date %>
+    </p>
+    <p>
+      <strong>Category:</strong>
+      <%= game.category %>
+    </p>
+    <p>
+      <strong>Rating:</strong>
+      <%= game.rating %>
+    </p>
+    <p>
+      <strong>Parent:</strong>
+      <%= game.parent_id %>
+    </p>
   </div>
-
-
-
-
-
-  </br>
 
 </div>
