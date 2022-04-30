@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "games#index"
   
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: :callbacks }
 
   resources :critics
   resources :involved_companies
