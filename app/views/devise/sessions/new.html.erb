@@ -1,6 +1,7 @@
 <h2>Sign in to your account</h2>
 <h3>continue with </h3>
-<p>OR</p>
+<%= render "devise/shared/github_link" %>
+<p>or</p>
 
 <div data-turbo="false">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

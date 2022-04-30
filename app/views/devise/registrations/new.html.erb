@@ -1,4 +1,7 @@
 <h2>Create an account</h2>
+<h3>continue with </h3>
+<%= render "devise/shared/github_link" %>
+<p>or</p>
 
 <div data-turbo="false">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
