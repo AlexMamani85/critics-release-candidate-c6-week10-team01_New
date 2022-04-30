@@ -28,18 +28,23 @@
   </div>
 
   <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.number_field :category %>
-  </div>
-
-  <div>
     <%= form.label :rating, style: "display: block" %>
-    <%= form.text_field :rating %>
+     <%= form.number_field :rating, step: 0.1%>
   </div>
 
   <div>
-    <%= form.label :parente_id, style: "display: block" %>
-    <%= form.text_field :parente_id %>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.select :category, Game.categories.keys, { prompt: true } %>
+  </div>
+
+  <div>
+    <%= form.label :parent_id, style: "display: block" %>
+    <%= form.collection_select :parent_id, Game.main_game, :id, :name, { include_blank: "Please select" } %>
+  </div>
+  
+  <div>
+    <%= form.label :cover, style: "display: block" %>
+    <%= form.file_field :cover %>
   </div>
 
   <div>

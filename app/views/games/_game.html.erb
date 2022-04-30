@@ -4,6 +4,14 @@
     <%= game.name %>
   </p>
 
+  <div>
+    <% if game.cover.attached? %>
+      <div>
+        <%= image_tag(game.cover, class: "category-image") %>
+      </div>
+    <% end %>
+  </div>
+
   <p>
     <strong>Summary:</strong>
     <%= game.summary %>
@@ -25,7 +33,7 @@
   </p>
 
   <p>
-    <strong>Parente:</strong>
+    <strong>Parent:</strong>
     <%= game.parent_id %>
   </p>
 </div>
