@@ -13,36 +13,38 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, style: "display: block", class:"mt-1 mb-0.25" %>
+    <%= form.text_field :name, class:"input", placeholder:"Secret planning" %>
   </div>
 
   <div>
-    <%= form.label :summary, style: "display: block" %>
-    <%= form.text_area :summary %>
+    <%= form.label :summary, style: "display: block", class:"mt-1 mb-0.25" %>
+    <%= form.text_area :summary, class:"input", placeholder:"This is the best department yet" %>
   </div>
 
   <div>
-    <%= form.label :release_date, style: "display: block" %>
-    <%= form.date_field :release_date %>
+    <%= form.label :release_date, style: "display: block", class:"mt-1 mb-0.25" %>
+    <%= form.date_field :release_date, class:"input", placeholder:"dd/mm/yyyy"  %>
   </div>
 
   <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.number_field :category %>
+    <%= form.label :category, style: "display: block", class:"mt-1 mb-0.25" %>
+    <%= form.number_field :category, class:"input"  %>
   </div>
 
   <div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.text_field :rating %>
+    <%= form.label :rating, style: "display: block", class:"mt-1 mb-0.25" %>
+    <%= form.text_field :rating, class:"input", placeholder:"0.0"  %>
   </div>
 
   <div>
-    <%= form.label :parente_id, style: "display: block" %>
-    <%= form.text_field :parente_id %>
+    <%= form.label :parent_id, style: "display: block", class:"mt-1 mb-0.25" %>
+    <%= form.text_field :parent_id, class:"input"  %>
   </div>
 
-  <div>
+  <div class="button button--primary" >
+  
     <%= form.submit %>
+
   </div>
 <% end %>
