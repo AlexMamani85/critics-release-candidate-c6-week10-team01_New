@@ -1,25 +1,31 @@
 <div id="<%= dom_id game %>">
+  <p>
+    <strong>Name:</strong>
+    <%= game.name %>
+  </p>
 
-  <div class="card">
+  <p>
+    <strong>Summary:</strong>
+    <%= game.summary %>
+  </p>
 
-    <div class="card--image">
-    </div>
+  <p>
+    <strong>Release date:</strong>
+    <%= game.release_date %>
+  </p>
 
-    <div class="card--content">
-      <p><%= game.name %><%= game.rating %></p>
-      <p><%= game.release_date.year %></p>
-      <p><%= game.summary %></p>
-      <p>Nro de criticas</p>
+  <p>
+    <strong>Category:</strong>
+    <%= game.category %>
+  </p>
 
+  <p>
+    <strong>Rating:</strong>
+    <%= game.rating %>
+  </p>
 
-    </div>
-
-  </div>
-
-
-
-
-
-  </br>
-
+  <p>
+    <strong>Parente:</strong>
+    <%= game.parent_id %>
+  </p>
 </div>
