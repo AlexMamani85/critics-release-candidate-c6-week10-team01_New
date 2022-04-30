@@ -28,10 +28,10 @@
   </div>
 
   <div>
-
-    <%= form.label :category, style: "display: block", class:"mt-1 mb-0.25" %>
-    <%= form.number_field :category, Game.categories.keys, { prompt: true }, class:"input"  %>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.select :category, Game.categories.keys, { prompt: true }, class:"input"  %>
   </div>
+
 
   <div>
     <%= form.label :rating, style: "display: block", class:"mt-1 mb-0.25" %>
