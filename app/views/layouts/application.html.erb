@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="icon" href="/images/logo.png">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -15,10 +16,14 @@
   <body>
 
 
-  
+  <section class="section-sm">
+    <div class="container-sm">
 
-    <%= render "layouts/header" %>
-    <%= yield %>
-    <%= render "layouts/footer" %>
+
+        <%= render "layouts/header" %>
+        <%= yield %>
+        <%= render "layouts/footer" %>
+      </div>
+    </section>
   </body>
 </html>
