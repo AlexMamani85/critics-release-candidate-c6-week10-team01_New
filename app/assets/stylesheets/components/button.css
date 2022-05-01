@@ -105,6 +105,7 @@
     font-size: 1.5rem;
   }
   
+
   /* Loading state */
   .button--loading .button__icon {
     animation: spin 1s linear infinite;

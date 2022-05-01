@@ -56,8 +56,9 @@
     <%= form.file_field :cover %>
   </div>
 
-    
-<%# me falta UPDATE GAME %>
+  <% if game.name.blank? %>
     <input class="button button--primary mt-1 mb-0.25 w-full" type="submit" value="CREATE GAME">
-
+  <% else%>
+    <input class="button button--primary mt-1 mb-0.25 w-full" type="submit" value="UPDATE GAME">
+  <% end %>
 <% end %>
