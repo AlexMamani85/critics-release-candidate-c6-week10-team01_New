@@ -8,6 +8,8 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1
   def show
+    @critics = @company.critics
+    @new_critic = Critic.new
   end
 
   # GET /companies/new
@@ -28,6 +30,8 @@ class CompaniesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+
+
   end
 
   # PATCH/PUT /companies/1
@@ -53,6 +57,6 @@ class CompaniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def company_params
-      params.require(:company).permit(:name, :description, :start_date, :country)
+      params.require(:company).permit(:name, :description, :start_date, :country, :cover)
     end
 end

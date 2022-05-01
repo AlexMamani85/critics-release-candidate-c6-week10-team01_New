@@ -1,5 +1,18 @@
 <div id="<%= dom_id game %>">
 
+<div class="card">
+    <div class="card--image">
+      <% if game.cover.attached? %>
+        <div>
+          <%= image_tag(game.cover, class: "category-image") %>
+        </div>
+      <% end %>
+    </div>  
+    
+    <div class="card--content">
+      <p>
+        <%= game.name %>
+      </p>
 
 <div class="card wrapper">
   <div class="card--image wrapper">
@@ -38,5 +51,6 @@
 
 
   </div>
+
 
 </div>

@@ -1,0 +1,36 @@
+<div id="<%= dom_id game %>">
+
+<div class="card">
+    <div class="card--image">
+      <% if game.cover.attached? %>
+        <div>
+          <%= image_tag(game.cover, class: "category-image") %>
+        </div>
+      <% end %>
+    </div>  
+    
+    <div class="card--content">
+      <p>
+        <%= game.name %>
+      </p>
+
+      <% unless game.release_date.blank? %>
+        <p>
+          <%= game.release_date.year %>
+        </p>
+      <% end %>
+      
+      <p>
+        <%= game.rating %>
+      </p>
+
+      <p>
+        <%= game.summary %>
+      </p>
+
+      <p>
+        <%= game.critics.count %>
+        critics
+      </p>
+    </div>
+</div>
