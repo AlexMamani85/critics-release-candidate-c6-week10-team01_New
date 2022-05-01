@@ -1,56 +1,44 @@
 <div id="<%= dom_id game %>">
 
-<div class="card">
-    <div class="card--image">
+  <div class="card wrapper">
+    <div class="card--image wrapper">
       <% if game.cover.attached? %>
         <div>
-          <%= image_tag(game.cover, class: "category-image") %>
+          <%= image_tag(game.cover) %>
         </div>
       <% end %>
     </div>  
     
-    <div class="card--content">
-      <p>
-        <%= game.name %>
-      </p>
-
-<div class="card wrapper">
-  <div class="card--image wrapper">
-    <% if game.cover.attached? %>
-      <div>
-        <%= image_tag(game.cover) %>
+    <div class="card--content wrapper">
+      <div class="flex--space__between">
+        <p><%= game.name %></p>
+        <div class="btn--rating "><%= game.rating %></div>
       </div>
-    <% end %>
-  </div>  
-  
-  <div class="card--content wrapper">
-    <div class="flex--space__between">
-      <p><%= game.name %></p>
-      <div class="btn--rating "><%= game.rating %></div>
+
+      <p><%= game.release_date.year %></p>
+      <p><%= game.summary %></p>
+
+
+
+
+
+      <div class="flex--end">
+        <form action="/games/<%= game.id %>/edit" method="get" target="_blank">
+          <button type="submit" value="Edit Game">
+                <img src="/images/edit.svg">
+          </button>
+        </form>
+        <form action="/games/<%= game.id %>" method="delete" target="_blank">
+          <button type="submit" value="Destroy Game">
+                <img src="/images/tacho.svg">
+          </button>
+        </form>
+      </div>
+
+
     </div>
 
-    <p><%= game.release_date.year %></p>
-    <p><%= game.summary %></p>
-
-
-
-
-
-  <div class="flex--end">
-    <form action="/games/<%= game.id %>/edit" method="get" target="_blank">
-      <button type="submit" value="Edit Game">
-            <img src="/images/edit.svg">
-      </button>
-    </form>
-    <form action="/games/<%= game.id %>" method="delete" target="_blank">
-      <button type="submit" value="Destroy Game">
-            <img src="/images/tacho.svg">
-      </button>
-    </form>
-  </div>
-
 
   </div>
-
 
 </div>
