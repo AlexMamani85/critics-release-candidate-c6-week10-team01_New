@@ -1,24 +1,23 @@
 <div id="<%= dom_id company %>">
 
+<div class="card">
   <div>
-  <% if company.cover.attached? %>
-    <div>
-      <%= image_tag(company.cover, class: "category-image") %>
-    </div>
-  <% end %>
-</div>
+    <% if company.cover.attached? %>
+      <div>
+        <%= image_tag(company.cover, class: "category-image") %>
+      </div>
+    <% end %>
+  </div>
 
-  <p>
-    <%= company.name %>
-  </p>
+  <div class="card--content">
+    <p>
+      <%= company.name %>
+    </p>
 
-  <p>
-    <%= company.start_date %>
-    <%= company.country %>
-  </p>
-
-  <p>
-    <%= company.description %>
-  </p>
+    <p>
+      <%= company.start_date %>
+      <%= company.country %>
+    </p>
+  </div>
 
 </div>
