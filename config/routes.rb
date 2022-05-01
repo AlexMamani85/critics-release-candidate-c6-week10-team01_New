@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :genres
   resources :platforms
   resources :companies do
-    resources :critics, only: [ :create, :destroy ]
+    resources :critics, only: %i[create destroy]
   end
   
 end

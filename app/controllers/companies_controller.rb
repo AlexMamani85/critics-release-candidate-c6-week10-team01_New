@@ -8,6 +8,8 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1
   def show
+    @critics = @company.critics
+    @new_critic = Critic.new
   end
 
   # GET /companies/new

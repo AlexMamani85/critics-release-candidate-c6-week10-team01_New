@@ -1,5 +1,5 @@
 
-<%= form_with  url: game_critics_path(@game), model: critic do |form| %>
+<%= form_with  url: company_critics_path(@company), model: critic do |form| %>
   <% if critic.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(critic.errors.count, "error") %> prohibited this critic from being saved:</h2>
@@ -37,7 +37,7 @@
   <p><%= critic.body %></p>
   <p><%= message %></p>
 
-  <%= link_to "Destroy", game_critic_path(@game, critic), data: {
+  <%= link_to "Destroy", company_critic_path(@company, critic), data: {
       turbo_method: :delete,
       turbo_confirm: "Are you sure?"
   } %>
