@@ -1,6 +1,85 @@
 <p style="color: green"><%= notice %></p>
 <%= render "game", game: @game %>
 
+<% @game.critics.each do |critic| %>
+  <p><%= critic.body %></p>
+<% end %>
+
+
+
+
+<h3 class="text-sm  mt-1 mb-0.25">Genres:</h3>
+<ul class="list-style-none">
+  <% @game.genres.each do |g| %>
+    <li>
+      <div class="button--secondary button--sm width-fit-content">
+        <%= g.name %> | <%= link_to 'X', remove_genre_game_path(@game, genre_id: g.id), data: { turbo_method: :delete } %> 
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<h3 class="text-sm mb-0.25 mt-1">Platforms:</h3>
+<ul class="list-style-none">
+  <% @game.platforms.each do |g| %>
+    <li>
+      <div class="button--secondary button--sm width-fit-content">
+        <%= g.name %> | 
+        <%= link_to 'X', remove_platform_game_path(@game, platform_id: g.id), data: { turbo_method: :delete } %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<h3 class="text-sm mb-0.25 mt-1">Developer:</h3>
+<ul class="list-style-none">
+  <% @game.involved_companies.where(developer: true).each do |g| %>
+    <div class="button--secondary button--sm width-fit-content">
+      <li><%= g.company.name %> | <%= link_to 'X', remove_developer_game_path(@game, invol_id: g.id), data: { turbo_method: :delete } %></li>
+    </div>
+  <% end %>
+</ul>
+
+<h3 class="text-sm mb-0.25 mt-1">Publishers:</h3>
+  <ul class="list-style-none">
+    <% @game.involved_companies.where(publisher: true).each do |g| %>
+      <div class="button--secondary button--sm width-fit-content">
+        <li><%= g.company.name %> | <%= link_to 'X', remove_publisher_game_path(@game, invol_id: g.id), data: { turbo_method: :delete } %></li>
+      </div>
+    <% end %>
+  </ul>
+
+<h2 class="text-xl flex--space__between">Add Relations</h2>
+
+    
+<div class="text-sm  mt-1 mb-0.25 flex--row">
+  <%= form_with(url: add_genre_game_path(@game)) do |form| %>
+    <%= form.collection_select :genre_id, (Genre.all - @game.genres), :id, :name, { prompt: true }, class:"input width-220" %>
+    <%= form.submit "ADD GENRE", class:"button button--primary button--sm" %>
+  <% end %>
+</div>
+<div class="text-sm  mt-1 mb-0.25 flex--row">
+  <%= form_with(url: add_platform_game_path(@game)) do |form| %>
+    <%= form.collection_select :platform_id, (Platform.all - @game.platforms), :id, :name, { prompt: true }, class:"input width-190"%>
+    <%= form.submit "ADD PLATFORM", class:"button button--primary button--sm" %>
+  <% end %>
+</div>
+<div class="text-sm  mt-1 mb-0.25  flex--row">
+  <%= form_with(url: add_developer_game_path(@game)) do |form| %>
+    <div><%= form.collection_select :company_id, (Company.all), :id, :name, { prompt: true }, class:"input width-190"%></div>
+    <div><%= form.submit "ADD DEVELOPER", class:"button button--primary button--sm" %></div>
+  <% end %>
+</div>
+<div class="text-sm  mt-1 mb-0.25 flex--row">
+  <%= form_with(url: add_publisher_game_path(@game)) do |form| %>
+    <%= form.collection_select :company_id, (Company.all), :id, :name, { prompt: true }, class:"width-190 input"%>
+    <%= form.submit "ADD PUBLISHER", class:"button button--primary button--sm" %>
+  <% end %>
+</div>
+
+<%# <%= render "games/critics", critic: @new_critic %> 
+
+
 <hr>
 
 

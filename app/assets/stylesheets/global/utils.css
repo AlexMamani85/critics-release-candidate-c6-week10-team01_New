@@ -25,6 +25,7 @@
 
 .list-style-none {
   list-style-type: none;
+  gap:4px;
 }
 
 .text-decoration-none {

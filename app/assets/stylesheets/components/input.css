@@ -6,6 +6,13 @@
   width: fit-content;
   width: 100%;
 }
+.input2 {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  width: fit-content;
+  width: 50%;
+}
 
 .input__icon {
   height: 1.5em;
@@ -102,6 +109,16 @@
   box-shadow: var(--shadow-input-error);
   border: 1px solid var(--error-300);
 }
+
+  /* width p' input */
+  .width-220 {
+    width:220px;
+    }
+   
+  .width-190 {
+    width:220px;
+    }
+    
 
 /* Radio Button & Checkbox */
 
