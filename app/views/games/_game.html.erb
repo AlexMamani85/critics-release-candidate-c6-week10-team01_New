@@ -1,6 +1,6 @@
 <div id="<%= dom_id game %>">
 
-  <div class="card wrapper">
+  <div class="card">
     <div class="card--image wrapper">
       <% if game.cover.attached? %>
         <div>
@@ -9,7 +9,7 @@
       <% end %>
     </div>  
     
-    <div class="card--content wrapper">
+    <div class="card--content">
       <div class="flex--space__between">
         <p><%= game.name %></p>
         <div class="btn--rating "><%= game.rating %></div>
