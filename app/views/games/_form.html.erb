@@ -19,7 +19,7 @@
 
   <div>
     <%= form.label :summary, style: "display: block", class:"mt-1 mb-0.25" %>
-    <%= form.text_area :summary, class:"input", placeholder:"This is the best department yet" %>
+    <%= form.text_area :summary, class:"input summary", placeholder:"This is the best department yet" %>
   </div>
 
   <div>
@@ -28,7 +28,7 @@
   </div>
 
   <div>
-    <%= form.label :category, style: "display: block" %>
+    <%= form.label :category, style: "display: block", class:"mt-1 mb-0.25"  %>
     <%= form.select :category, Game.categories.keys, { prompt: true }, class:"input"  %>
   </div>
 
@@ -52,12 +52,12 @@
   </div>  
     
   <div>
-    <%= form.label :cover, style: "display: block" %>
+    <%= form.label :cover, style: "display: block", class:"mt-1 mb-0.25" %>
     <%= form.file_field :cover %>
   </div>
 
     
-  <div class="button button--primary" >
-      <%= form.submit %>
-  </div>
+<%# me falta UPDATE GAME %>
+    <input class="button button--primary mt-1 mb-0.25 w-full" type="submit" value="CREATE GAME">
+
 <% end %>

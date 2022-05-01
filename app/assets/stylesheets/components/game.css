@@ -1,0 +1,27 @@
+.btn--rating {
+    background-color: var(--stone-500);
+    border-radius: 4px;
+    color:white;
+    width: 3.5em;
+    height: 1.5em;
+    text-align:center;
+}
+.flex--space__between {
+    display: flex;
+    justify-content:space-between;
+}
+
+.flex--end {
+    display: flex;
+    justify-content:end;
+}
+
+.align-text-center{
+    display: flex;
+    justify-content:center;
+}
+
+.summary{
+    height: 15em;
+
+}

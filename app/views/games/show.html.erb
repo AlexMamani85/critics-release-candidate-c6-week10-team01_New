@@ -4,9 +4,11 @@
 <hr>
 <%= link_to "Game details", game_path(@game) %>
 
-<p>
-  <%= @game.summary %>
-</p>
+
+<div>
+  <%= link_to "Edit this game", edit_game_path(@game) %>
+  <%= link_to "Back to games", games_path, class:"align-text-center" %>
+
 
 <h3>Genres:</h3>
 <ul>
