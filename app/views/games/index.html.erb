@@ -7,9 +7,7 @@
 
 <div id="games">
   <% @games.each do |game| %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
+
     <%= render game %>
     
   <% end %>
