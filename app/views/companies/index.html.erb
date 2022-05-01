@@ -7,33 +7,32 @@
 </button>
 
 
-<div id="companies">
+<div class="card">
   <% @companies.each do |company| %>
-    
-    <%= image_tag(company.cover) if company.cover.attached? %>
+    <div class="card--image wrapper">
+      <%= image_tag(company.cover) if company.cover.attached? %>
+    </div>
 
     <div class="card--content">
-    <p>
-      <%= company.name %>
-    </p>
+      <p><%= company.name %></p>
 
-    <p>
-      <%= company.start_date %>
-      <%= company.country %>
-    </p>
+      <% if company.start_date.nil? %>
+        <p>Unknown Year
+      <% else%>
+        <p><%= company.start_date.year %>
+      <% end %>
+       - <%= company.country %></p>
 
-    <p>
-      <%= company.description %>
-    </p>
 
-    <p>
-      <%= company.games.count %>
-      games
-    </p>
-  </div>
+      <p><%= company.description %></p>
+      <p><%= company.games.count %> games</p>
 
-    <p>
-      <%= link_to "Show this company", company %>
-    </p>
+
+      <p><%= link_to "Show this company", company %></p>
+
+      <br>
+    </div>
+
+
   <% end %>
 </div>
