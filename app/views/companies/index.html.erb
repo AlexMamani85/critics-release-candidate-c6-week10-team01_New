@@ -22,11 +22,35 @@
         <p><%= company.start_date.year %>
       <% end %>
        - <%= company.country %></p>
+        <% lorem="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id ligula convallis, pharetra orci vel, ultricies dolor. Phasellus convallis purus in lorem posuere tempus. Sed diam lacus, porta a neque a, consequat tincidunt ex." %>
+        <% if company.description.nil? %>
+          <p style="color:white"><%= lorem%> </p>
+        <% else %>
+            <% if company.description.length<200%>
+              <p><%= company.description%></p>
+              <p style="color:white"><%= lorem%> </p>
+            <% else %>
+              <p><%= company.description.slice(0..150)  %></p>
+            <% end %>
+        <% end %>
 
 
-      <p><%= company.description %></p>
+
       <p><%= company.games.count %> games</p>
 
+
+      <div class="flex--end">
+        <form action="/companies/<%= company.id %>/edit" method="get" target="_blank">
+          <button type="submit" value="Edit Game">
+                <img src="/images/edit.svg">
+          </button>
+        </form>
+        <form action="/companies/<%= company.id %>" method="delete" target="_blank">
+          <button type="submit" value="Destroy Game">
+                <img src="/images/tacho.svg">
+          </button>
+        </form>
+      </div>
 
       <p><%= link_to "Show this company", company %></p>
 
